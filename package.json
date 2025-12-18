@@ -2,12 +2,15 @@
   "name": "ecommerce-api",
   "version": "1.0.0",
   "description": "This is a simplified eCommerce API to handle all daily questions such as inventory management, user authentication and cart actions",
-  "main": "App.js",
+  "main": "dist/server.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/barbosacaio/ecommerce-api"
   },
   "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint 'src/**/*.{ts,js}'",
     "lint:fix": "eslint 'src/**/*.{ts,js}' --fix",
@@ -38,6 +41,13 @@
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
+    "express": "^5.2.1",
     "prettier": "^3.7.4"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.3",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   }
 }
