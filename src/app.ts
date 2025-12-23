@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+import { errorHandler } from './middlewares/errorHandler';
 
 const app = express();
 
@@ -17,5 +18,8 @@ app.get('/health', (req, res) => {
     timestamp: new Date().toISOString()
   });
 });
+
+// Error middleware
+app.use(errorHandler);
 
 export { app };
