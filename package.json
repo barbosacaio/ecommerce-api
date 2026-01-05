@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/barbosacaio/ecommerce-api#readme",
   "dependencies": {
+    "@prisma/client": "^7.2.0",
     "@typescript-eslint/eslint-plugin": "^8.50.0",
     "@typescript-eslint/parser": "^8.50.0",
     "cors": "^2.8.5",
@@ -45,7 +46,8 @@
     "eslint-plugin-prettier": "^5.5.4",
     "express": "^5.2.1",
     "helmet": "^8.1.0",
-    "prettier": "^3.7.4"
+    "prettier": "^3.7.4",
+    "prisma": "^7.2.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",

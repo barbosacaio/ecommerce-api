@@ -2,3 +2,4 @@ node_modules
 personal_notes.md
 dist
 .env
+/src/generated/prisma
