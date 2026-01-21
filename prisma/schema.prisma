@@ -16,3 +16,23 @@ model User {
 
   @@map("users")
 }
+
+model Product {
+  id String @id @default(uuid())
+  name String
+  description String
+  price Int
+  stock Int
+  is_active Boolean @default(true)
+  created_at DateTime @default(now())
+
+  categories Category[] @relation("ProductCategories")
+}
+
+model Category {
+  id String @id @default(uuid())
+  name String
+  created_at DateTime @default(now())
+
+  products Product[] @relation("ProductCategories")
+}
