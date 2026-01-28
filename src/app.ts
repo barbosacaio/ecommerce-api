@@ -6,6 +6,7 @@ import { errorHandler } from './middlewares/errorHandler';
 import { authRoutes } from './routes/auth.routes';
 import { usersRoutes } from './routes/users.routes';
 import { productsRoutes } from './routes/products.routes';
+import { categoriesRoutes } from './routes/categories.routes';
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.get('/health', (req, res) => {
 app.use('/auth', authRoutes);
 app.use('/users', usersRoutes);
 app.use('/products', productsRoutes);
+app.use('/categories', categoriesRoutes);
 
 // Error middleware
 app.use(errorHandler);
