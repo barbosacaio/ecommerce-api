@@ -2,6 +2,36 @@ import { Request, Response} from 'express';
 import { prisma } from '../database/prisma';
 
 export class CartController {
+    // GET /cart
+    async getCart(request: Request, response: Response) {
+        const userId = request.user.id;
+
+        const cart = await prisma.cart.findUnique({
+            where: { user_id: userId },
+            include: {
+                items: {
+                    include: {
+                        product: true,
+                    },
+                },
+            },
+        });
+
+        if (!cart) {
+            return response.json({ items: [], total: 0 });
+        }
+
+        const total = cart.items.reduce((sum, item) => {
+            return sum + (item.price * item.quantity);
+        }, 0);
+
+        return response.json({
+            id: cart.id,
+            items: cart.items,
+            total,
+        });
+    }
+
     // POST /cart/items
     async addItem(request: Request, response: Response) {
         const userId = request.user.id;
