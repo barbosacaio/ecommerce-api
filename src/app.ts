@@ -30,7 +30,7 @@ app.use('/auth', authRoutes);
 app.use('/users', usersRoutes);
 app.use('/products', productsRoutes);
 app.use('/categories', categoriesRoutes);
-app.use(cartRoutes);
+app.use('/cart', cartRoutes);
 
 // Error middleware
 app.use(errorHandler);

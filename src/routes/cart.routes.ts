@@ -5,8 +5,8 @@ import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 const router = Router();
 const cartController = new CartController();
 
-router.post('/cart/items', ensureAuthenticated, cartController.addItem);
-router.patch('/cart/items/:id', ensureAuthenticated, cartController.updateItem);
-router.delete('/cart/items/:id', ensureAuthenticated, cartController.removeItem);
+router.post('/items', ensureAuthenticated, cartController.addItem);
+router.patch('/items/:id', ensureAuthenticated, cartController.updateItem);
+router.delete('/items/:id', ensureAuthenticated, cartController.removeItem);
 
 export { router as cartRoutes };
