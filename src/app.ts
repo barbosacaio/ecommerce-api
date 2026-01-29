@@ -7,6 +7,7 @@ import { authRoutes } from './routes/auth.routes';
 import { usersRoutes } from './routes/users.routes';
 import { productsRoutes } from './routes/products.routes';
 import { categoriesRoutes } from './routes/categories.routes';
+import { cartRoutes } from './routes/cart.routes';
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use('/auth', authRoutes);
 app.use('/users', usersRoutes);
 app.use('/products', productsRoutes);
 app.use('/categories', categoriesRoutes);
+app.use(cartRoutes);
 
 // Error middleware
 app.use(errorHandler);
