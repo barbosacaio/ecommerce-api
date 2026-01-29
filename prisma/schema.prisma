@@ -13,7 +13,7 @@ model User {
   password_hash String
   role String @default("customer")
   created_at DateTime @default(now())
-
+  cart Cart?
   @@map("users")
 }
 
@@ -25,14 +25,33 @@ model Product {
   stock Int @default(0)
   is_active Boolean @default(true)
   created_at DateTime @default(now())
-
   categories Category[] @relation("ProductCategories")
+  cartItems CartItem[]
 }
 
 model Category {
   id String @id @default(uuid())
   name String
   created_at DateTime @default(now())
-
   products Product[] @relation("ProductCategories")
+}
+
+model Cart {
+  id String @id @default(uuid())
+  user_id String @unique
+  user User @relation(fields: [user_id], references: [id])
+  items CartItem[]
+  created_at DateTime @default(now())
+}
+
+model CartItem {
+  id String @id @default(uuid())
+  cart_id String
+  cart Cart @relation(fields: [cart_id], references: [id])
+  product_id String
+  product Product @relation(fields: [product_id], references: [id])
+  quantity Int
+  price Int
+  created_at DateTime @default(now())
+  @@unique([cart_id, product_id])
 }
