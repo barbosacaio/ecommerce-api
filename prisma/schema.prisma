@@ -14,6 +14,7 @@ model User {
   role String @default("customer")
   created_at DateTime @default(now())
   cart Cart?
+  orders Order[]
   @@map("users")
 }
 
@@ -27,6 +28,7 @@ model Product {
   created_at DateTime @default(now())
   categories Category[] @relation("ProductCategories")
   cartItems CartItem[]
+  orderItems OrderItem[]
 }
 
 model Category {
@@ -54,4 +56,26 @@ model CartItem {
   price Int
   created_at DateTime @default(now())
   @@unique([cart_id, product_id])
+}
+
+model Order {
+  id String @id @default(uuid())
+  user_id String
+  status String
+  total Int
+  created_at DateTime @default(now())
+  user User @relation(fields: [user_id], references: [id])
+  items OrderItem[]
+  @@map("orders")
+}
+
+model OrderItem {
+  id String @id @default(uuid())
+  order_id String
+  product_id String
+  quantity Int
+  unit_price Int
+  order Order @relation(fields: [order_id], references: [id])
+  product Product @relation(fields: [product_id], references: [id])
+  @@map("order_items")
 }
