@@ -8,6 +8,7 @@ import { usersRoutes } from './routes/users.routes';
 import { productsRoutes } from './routes/products.routes';
 import { categoriesRoutes } from './routes/categories.routes';
 import { cartRoutes } from './routes/cart.routes';
+import { ordersRoutes } from './routes/orders.routes';
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use('/users', usersRoutes);
 app.use('/products', productsRoutes);
 app.use('/categories', categoriesRoutes);
 app.use('/cart', cartRoutes);
+app.use('/orders', ordersRoutes);
 
 // Error middleware
 app.use(errorHandler);
