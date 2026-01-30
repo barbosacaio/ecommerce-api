@@ -2,6 +2,26 @@ import { Request, Response} from 'express';
 import { prisma } from '../database/prisma';
 
 export class OrdersController {
+    // GET /orders/my
+    async getOrders(request: Request, response: Response) {
+        const userId = request.user.id;
+        const orders = await prisma.order.findMany({
+            where: { user_id: userId },
+            include: {
+                items: {
+                    include: {
+                        product: true,
+                    },
+                },
+            },
+            orderBy: {
+                created_at: 'desc',
+            },
+        });
+
+        return response.json(orders);
+    }
+
     // POST /orders
     async createOrder(request: Request, response: Response) {
         const userId = request.user.id;
