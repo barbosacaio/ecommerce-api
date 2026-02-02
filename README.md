@@ -9,7 +9,6 @@ This is a simplified eCommerce API to handle all daily questions such as **inven
 ## 📖 What to learn
 - JWT authentication & user management
 - Database connection and management
-- Testing automations
 
 ## 🧬 Tech Stack
 - Node.js + TypeScript
@@ -17,11 +16,12 @@ This is a simplified eCommerce API to handle all daily questions such as **inven
 - PostgreSQL + Prisma
 - JWT
 - Zod
-- Jest
-- Docker
 
 ## ❔ How to use
-1. Install required dependencies with ``npm install``
+1. Clone the repository
+2. Install required dependencies with ``npm install``
+3. Configure environment variables by creating a ``.env`` file based on the ``.env.example`` file
+4. Run database migrations with ``npx prisma migrate dev``
 
 ## 📋 Technical Notes
 - **Attributes**
@@ -94,3 +94,10 @@ This is a simplified eCommerce API to handle all daily questions such as **inven
     - ``POST`` /orders
     - ``GET`` /orders
     - ``GET`` /orders/:id
+
+## 🚀 Notes
+- All protected routes require a **Bearer Token**
+- Orders are created using **database transactions**
+- Stock is validated and decremented automatically
+- Cart is cleaned after order creation
+- All critical requests are validated through Zod
